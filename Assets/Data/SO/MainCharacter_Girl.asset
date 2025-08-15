@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5429a86c46211764b82c980d3a72bbe5, type: 3}
+  m_Name: MainCharacter_Girl
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterID: 2
+  characterName: "\uC18C\uB140"
+  portrait: {fileID: 21300000, guid: 2de87d3aee0172946b8f69e33ea348d1, type: 3}
+  description: "\uD2B9\uC218 \uC218\uC0AC\uACFC \uC18C\uC18D \uCD08\uB2A5\uB825\uC790"
