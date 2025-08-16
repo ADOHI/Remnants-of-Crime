@@ -5,18 +5,13 @@ using TMPro;
 public class NotebookUI : MonoBehaviour
 {
     public RectTransform background; // 백그라운드(부모)
-    public CharacterData[] characters;
-    public EvidenceData[] evidences; // 인스펙터에서 등록
+    public PlayerStatsData playerStats; // 스탯 데이터 SO
+    public EvidenceData[] evidences; // 증거품 데이터
 
-    private GameObject characterGrid;
+    private GameObject slotGrid;
     private GameObject detailsPage;
 
-    private int currentCharacterIndex = 0;
-    private int currentInfoTabIndex = 0;
-
-    private readonly string[] infoTabs = { "기본정보", "캐릭터 관계", "사건 관계", "대화 기록" };
-
-    void Start()
+    private void Start()
     {
         CreateTabs();
     }
@@ -24,11 +19,10 @@ public class NotebookUI : MonoBehaviour
     // ====== 탭 생성 ======
     private void CreateTabs()
     {
-        string[] tabNames = { "인물", "증거품", "설정" };
+        string[] tabNames = { "스탯 강화", "증거품", "설정" };
         for (int i = 0; i < tabNames.Length; i++)
         {
-            // [위치값 설정] 탭 버튼 위치
-            GameObject btnObj = CreateUIButton(tabNames[i], background, new Vector2(-800 , 200 - (i * 200)));
+            GameObject btnObj = CreateUIButton(tabNames[i], background, new Vector2(-800, 200 - (i * 200)));
             int index = i;
             btnObj.GetComponent<Button>().onClick.AddListener(() => OnTabClick(index));
         }
@@ -36,86 +30,121 @@ public class NotebookUI : MonoBehaviour
 
     private void OnTabClick(int index)
     {
-        if (index == 0) ShowCharacterList();
+        if (index == 0) ShowStatsTab();
         else if (index == 1) ShowEvidenceList();
-        // index == 2 → 설정 UI
+        // index == 2 → 설정
     }
 
-    // ====== 인물 목록 표시 ======
-    private void ShowCharacterList()
+    // ====== 스탯 강화 탭 ======
+    private void ShowStatsTab()
     {
-        if (characterGrid != null) Destroy(characterGrid);
+        if (slotGrid != null) Destroy(slotGrid);
         if (detailsPage != null) Destroy(detailsPage);
 
-        characterGrid = new GameObject("CharacterGrid", typeof(RectTransform));
-        characterGrid.transform.SetParent(background, false);
+        slotGrid = new GameObject("StatsGrid", typeof(RectTransform));
+        slotGrid.transform.SetParent(background, false);
 
-        var gridLayout = characterGrid.AddComponent<GridLayoutGroup>();
-        gridLayout.cellSize = new Vector2(200, 240); // [위치값 설정] 셀 크기
-        gridLayout.spacing = new Vector2(20, 20);    // [위치값 설정] 셀 간격
-        gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        gridLayout.constraintCount = 6; // 가로 6개
-        characterGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, 250); // [위치값 설정] 그리드 위치
+        var grid = slotGrid.AddComponent<GridLayoutGroup>();
+        grid.cellSize = new Vector2(200, 120);  // 슬롯 크기 넉넉히
+        grid.spacing = new Vector2(20, 20);
+        grid.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+        grid.constraintCount = 1; // 가로로 배치
 
-        for (int i = 0; i < characters.Length && i < 12; i++) // 최대 6x2 = 12개
-        {
-            if (characters[i] == null) continue;
-            GameObject slot = CreateCharacterSlot(characters[i]);
-            slot.transform.SetParent(characterGrid.transform, false);
-        }
+        slotGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(-500, 100);
+
+        CreateStatSlot("체력 (HP)", playerStats.hp,
+            () => { playerStats.hp = Mathf.Max(0, playerStats.hp - 10); RefreshStats(); },
+            () => { playerStats.hp += 10; RefreshStats(); });
+
+        CreateStatSlot("스태미나", playerStats.stamina,
+            () => { playerStats.stamina = Mathf.Max(0, playerStats.stamina - 5); RefreshStats(); },
+            () => { playerStats.stamina += 5; RefreshStats(); });
+
+        CreateStatSlot("현금 획득률", (playerStats.cashGainRate * 100f).ToString("F1") + "%",
+            () => { playerStats.cashGainRate = Mathf.Max(0, playerStats.cashGainRate - 0.1f); RefreshStats(); },
+            () => { playerStats.cashGainRate += 0.1f; RefreshStats(); });
+
+        CreateStatSlot("공격력", playerStats.attack,
+            () => { playerStats.attack = Mathf.Max(0, playerStats.attack - 1); RefreshStats(); },
+            () => { playerStats.attack += 1; RefreshStats(); });
     }
 
+    private void CreateStatSlot(string label, object value, UnityEngine.Events.UnityAction onMinus, UnityEngine.Events.UnityAction onPlus)
+    {
+        // 슬롯 배경
+        GameObject slot = new GameObject("StatSlot", typeof(RectTransform), typeof(Image));
+        slot.transform.SetParent(slotGrid.transform, false);
+
+        var slotImg = slot.GetComponent<Image>();
+        slotImg.color = new Color(0.2f, 0.2f, 0.2f, 0.6f); // 반투명 회색 배경
+
+        var vLayout = slot.AddComponent<VerticalLayoutGroup>();
+        vLayout.spacing = 10;
+        vLayout.childAlignment = TextAnchor.MiddleCenter;
+
+        // 스탯 텍스트
+        CreateUIText($"{label}: {value}", slot.transform, Vector2.zero, new Vector2(180, 40));
+
+        // 버튼 그룹
+        GameObject btnGroup = new GameObject("BtnGroup", typeof(RectTransform));
+        btnGroup.transform.SetParent(slot.transform, false);
+
+        var btnGroupRect = btnGroup.GetComponent<RectTransform>();
+        var hLayout = btnGroup.AddComponent<HorizontalLayoutGroup>();
+        hLayout.spacing = 20;
+        hLayout.childAlignment = TextAnchor.MiddleCenter;
+
+        // 버튼 그룹 크기 강제
+        var btnGroupLayout = btnGroup.AddComponent<LayoutElement>();
+        btnGroupLayout.preferredHeight = 50;
+        btnGroupLayout.minHeight = 50;
+
+        // - 버튼
+        GameObject minusBtn = CreateUIButton("-", btnGroup.transform, Vector2.zero);
+        minusBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(60, 40);
+        var minusLayout = minusBtn.AddComponent<LayoutElement>();
+        minusLayout.preferredWidth = 60;
+        minusLayout.preferredHeight = 40;
+        minusBtn.GetComponent<Button>().onClick.AddListener(onMinus);
+
+        // + 버튼
+        GameObject plusBtn = CreateUIButton("+", btnGroup.transform, Vector2.zero);
+        plusBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(60, 40);
+        var plusLayout = plusBtn.AddComponent<LayoutElement>();
+        plusLayout.preferredWidth = 60;
+        plusLayout.preferredHeight = 40;
+        plusBtn.GetComponent<Button>().onClick.AddListener(onPlus);
+    }
+
+
+
+    private void RefreshStats()
+    {
+        ShowStatsTab();
+    }
+
+    // ====== 증거품 목록 ======
     private void ShowEvidenceList()
     {
-        if (characterGrid != null) Destroy(characterGrid);
+        if (slotGrid != null) Destroy(slotGrid);
         if (detailsPage != null) Destroy(detailsPage);
 
-        characterGrid = new GameObject("EvidenceGrid", typeof(RectTransform));
-        characterGrid.transform.SetParent(background, false);
+        slotGrid = new GameObject("EvidenceGrid", typeof(RectTransform));
+        slotGrid.transform.SetParent(background, false);
 
-        var gridLayout = characterGrid.AddComponent<GridLayoutGroup>();
+        var gridLayout = slotGrid.AddComponent<GridLayoutGroup>();
         gridLayout.cellSize = new Vector2(120, 140);
         gridLayout.spacing = new Vector2(10, 10);
         gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         gridLayout.constraintCount = 6;
-        characterGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -150);
+        slotGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -150);
 
         for (int i = 0; i < evidences.Length && i < 12; i++)
         {
             if (evidences[i] == null) continue;
             GameObject slot = CreateEvidenceSlot(evidences[i]);
-            slot.transform.SetParent(characterGrid.transform, false);
+            slot.transform.SetParent(slotGrid.transform, false);
         }
-    }
-
-
-    private GameObject CreateCharacterSlot(CharacterData data)
-    {
-        GameObject slot = new GameObject(data.characterName, typeof(RectTransform));
-        var vLayout = slot.AddComponent<VerticalLayoutGroup>();
-        vLayout.spacing = 5;
-        vLayout.childAlignment = TextAnchor.MiddleCenter;
-
-        // 초상화
-        GameObject imgObj = new GameObject("Portrait", typeof(RectTransform));
-        imgObj.transform.SetParent(slot.transform, false);
-        var img = imgObj.AddComponent<Image>();
-        img.sprite = data.portrait;
-        img.preserveAspect = true;
-        imgObj.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100); // [위치값 설정] 초상화 크기
-
-        // 이름
-        CreateUIText(data.characterName, slot.transform, Vector2.zero, new Vector2(20, 10));
-
-        // 클릭 시 상세 페이지
-        var btn = slot.AddComponent<Button>();
-        btn.onClick.AddListener(() =>
-        {
-            currentCharacterIndex = System.Array.IndexOf(characters, data);
-            ShowCharacterDetails();
-        });
-
-        return slot;
     }
 
     private GameObject CreateEvidenceSlot(EvidenceData data)
@@ -128,7 +157,6 @@ public class NotebookUI : MonoBehaviour
         GameObject imgObj = new GameObject("Image", typeof(RectTransform));
         imgObj.transform.SetParent(slot.transform, false);
         var img = imgObj.AddComponent<Image>();
-        img.sprite = data.image;
         img.preserveAspect = true;
         imgObj.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
 
@@ -143,7 +171,7 @@ public class NotebookUI : MonoBehaviour
     private void ShowEvidenceDetails(EvidenceData data)
     {
         if (detailsPage != null) Destroy(detailsPage);
-        if (characterGrid != null) Destroy(characterGrid);
+        if (slotGrid != null) Destroy(slotGrid);
 
         detailsPage = new GameObject("EvidenceDetails", typeof(RectTransform));
         detailsPage.transform.SetParent(background, false);
@@ -153,7 +181,6 @@ public class NotebookUI : MonoBehaviour
         leftPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 0);
 
         var img = leftPage.AddComponent<Image>();
-        img.sprite = data.image;
         img.preserveAspect = true;
 
         GameObject rightPage = new GameObject("RightPage", typeof(RectTransform));
@@ -164,127 +191,28 @@ public class NotebookUI : MonoBehaviour
         CreateUIText(data.description, rightPage.transform, Vector2.zero, new Vector2(20, 10));
     }
 
-
-    // ====== 상세 페이지 ======
-    private void ShowCharacterDetails()
-    {
-        if (detailsPage != null) Destroy(detailsPage);
-        if (characterGrid != null) Destroy(characterGrid);
-
-        detailsPage = new GameObject("DetailsPage", typeof(RectTransform));
-        detailsPage.transform.SetParent(background, false);
-
-        // 왼쪽 페이지
-        GameObject leftPage = new GameObject("LeftPage", typeof(RectTransform));
-        leftPage.transform.SetParent(detailsPage.transform, false);
-        leftPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 0); // [위치값 설정] 왼쪽 페이지 위치
-        leftPage.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 400);
-
-        var charImg = leftPage.AddComponent<Image>();
-        charImg.sprite = characters[currentCharacterIndex].portrait;
-        charImg.preserveAspect = true;
-
-        // 위 화살표
-        GameObject upBtn = CreateUIButton("▲", leftPage.transform, new Vector2(0, 300)); // [위치값 설정]
-        upBtn.GetComponent<Button>().onClick.AddListener(() =>
-        {
-            currentCharacterIndex = (currentCharacterIndex - 1 + characters.Length) % characters.Length;
-            ShowCharacterDetails();
-        });
-
-        // 아래 화살표
-        GameObject downBtn = CreateUIButton("▼", leftPage.transform, new Vector2(0, -300)); // [위치값 설정]
-        downBtn.GetComponent<Button>().onClick.AddListener(() =>
-        {
-            currentCharacterIndex = (currentCharacterIndex + 1) % characters.Length;
-            ShowCharacterDetails();
-        });
-
-        // 오른쪽 페이지
-        GameObject rightPage = new GameObject("RightPage", typeof(RectTransform));
-        rightPage.transform.SetParent(detailsPage.transform, false);
-        rightPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(200, 0); // [위치값 설정]
-
-        UpdateRightPage(rightPage);
-    }
-
-    private void UpdateRightPage(GameObject rightPage)
-    {
-        foreach (Transform child in rightPage.transform)
-            Destroy(child.gameObject);
-
-        // 탭 이름
-        CreateUIText(infoTabs[currentInfoTabIndex], rightPage.transform, new Vector2(0, 300), new Vector2(300, 50));
-
-        // 내용
-        string content = "";
-        var data = characters[currentCharacterIndex];
-        switch (currentInfoTabIndex)
-        {
-            case 0: // 기본 정보
-                content = data.Discription;
-                break;
-            case 1: // 캐릭터 관계
-                foreach (var rel in data.relationships)
-                    content += $"- {rel.targetCharacterID}: {rel.relationDescription}\n";
-                break;
-            case 2: // 사건 관계
-                foreach (var rel in data.caserelationships)
-                    content += $"- {rel.targetCase}: {rel.relationDescription}\n";
-                break;
-            case 3: // 대화 기록
-                foreach (var t in data.transcripts)
-                    content += $"Q: {t.Question}\nA: {t.Answer}\n\n";
-                break;
-        }
-
-        CreateUIText(content, rightPage.transform, new Vector2(0, 0), new Vector2(400,400));
-
-        // 좌/우 화살표 생성
-        if (currentInfoTabIndex > 0) // 첫 페이지가 아닐 때만 좌측 화살표
-        {
-            GameObject leftArrow = CreateUIButton("◀", rightPage.transform, new Vector2(-150, -300)); // [위치값 설정]
-            leftArrow.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                currentInfoTabIndex = Mathf.Max(currentInfoTabIndex - 1, 0);
-                UpdateRightPage(rightPage);
-            });
-        }
-
-        if (currentInfoTabIndex < infoTabs.Length - 1) // 마지막 페이지가 아닐 때만 우측 화살표
-        {
-            GameObject rightArrow = CreateUIButton("▶", rightPage.transform, new Vector2(150, -300)); // [위치값 설정]
-            rightArrow.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                currentInfoTabIndex = Mathf.Min(currentInfoTabIndex + 1, infoTabs.Length - 1);
-                UpdateRightPage(rightPage);
-            });
-        }
-    }
-
     // ====== 공용 UI 생성 ======
     private GameObject CreateUIButton(string text, Transform parent, Vector2 anchoredPos)
     {
         GameObject obj = new GameObject(text + "_Button", typeof(RectTransform), typeof(Image), typeof(Button));
         obj.transform.SetParent(parent, false);
-        var txt = CreateUIText(text, obj.transform, Vector2.zero, new Vector2(20, 10));
-        obj.GetComponent<RectTransform>().anchoredPosition = anchoredPos; // [위치값 설정] 버튼 위치
+        CreateUIText(text, obj.transform, Vector2.zero, new Vector2(20, 10));
+        obj.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
         return obj;
     }
 
-    private GameObject CreateUIText(string text, Transform parent, Vector2 anchoredPos, Vector2 Size)
+    private GameObject CreateUIText(string text, Transform parent, Vector2 anchoredPos, Vector2 size)
     {
         GameObject obj = new GameObject("Text", typeof(RectTransform));
         obj.transform.SetParent(parent, false);
         var tmp = obj.AddComponent<TextMeshProUGUI>();
 
         tmp.text = text;
-        tmp.enableAutoSizing = true; // [폰트 변경 가능] 여기서 폰트 크기 변경 가능
-        // tmp.font = (TMP_FontAsset)Resources.Load("폰트경로"); // [폰트 변경 가능] TMP 폰트 지정 가능
+        tmp.enableAutoSizing = true;
         tmp.alignment = TextAlignmentOptions.Center;
 
-        obj.GetComponent<RectTransform>().anchoredPosition = anchoredPos; // [위치값 설정]
-        obj.GetComponent<RectTransform>().sizeDelta = Size; 
+        obj.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
+        obj.GetComponent<RectTransform>().sizeDelta = size;
         return obj;
     }
 }

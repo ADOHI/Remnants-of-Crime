@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e70922c8570b1f48baeaa6e81c60b97, type: 3}
-  m_Name: New Evidence Data
+  m_Name: Ev1
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceData
-  evidenceID: 1
-  evidenceName: 12
-  description: 123123
-  image: {fileID: 0}
+  evidenceID: EV001
+  evidenceName: "\uBA38\uADF8\uCEF5"
+  evidenceSprite: {fileID: 0}
+  description: "\uD53C\uACA9\uC9C1\uC804 \uC2AC\uB85C\uC6B0\uD6A8\uACFC"
+  passiveSkill: {fileID: 11400000, guid: 2d8993eb6e974934fbdef40f14f7b77d, type: 2}

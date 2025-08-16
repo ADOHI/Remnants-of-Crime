@@ -831,19 +831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NotebookUI
   background: {fileID: 1124499281}
-  characters:
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
-  - {fileID: 11400000, guid: 599444b5cbcc26446aa03ff4fca192a7, type: 2}
+  playerStats: {fileID: 11400000, guid: 1f5b4d828ee03454f829d2f336ab995c, type: 2}
+  evidences:
+  - {fileID: 11400000, guid: 4eb6310bf951ce5419ff24f416f34ed2, type: 2}
 --- !u!1 &1276970511
 GameObject:
   m_ObjectHideFlags: 0
