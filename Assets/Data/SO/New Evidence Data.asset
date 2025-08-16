@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70922c8570b1f48baeaa6e81c60b97, type: 3}
+  m_Name: New Evidence Data
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceData
+  evidenceID: 1
+  evidenceName: 12
+  description: 123123
+  image: {fileID: 0}
