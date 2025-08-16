@@ -1,29 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8030247011874939441
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
-  m_Name: Signal Track (1)
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects:
-    - {fileID: 919645098455642360}
 --- !u!114 &-7475689196990550203
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,6 +16,19 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}
+--- !u!114 &-6675194258923367166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f552628da7bba947b119e6d988dfd96, type: 3}
+  m_Name: Pause Marker
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMarker
+  m_Time: 5.25
 --- !u!114 &-6646263696058336857
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
-  m_Time: 2
+  m_Time: 1.25
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 0bb5300048a184844b0cc331ac4e02e5, type: 2}
@@ -80,6 +69,7 @@ MonoBehaviour:
   m_Markers:
     m_Objects:
     - {fileID: -3104775491467161979}
+    - {fileID: 8842704481603992259}
 --- !u!114 &-5412343561123940738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,9 +116,26 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: 1741702376549836618}
     - {fileID: 7657499319538288866}
     - {fileID: -715566391402002903}
+    - {fileID: -6675194258923367166}
+    - {fileID: 293877002441692732}
+--- !u!114 &-4070172565223214387
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: 
+  VirtualCamera:
+    exposedName: 99cbbf0356ee7fe4288c9840b093a5da
+    defaultValue: {fileID: 0}
 --- !u!114 &-3104775491467161979
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,10 +148,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
-  m_Time: 4
+  m_Time: 3.333333333333333
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 8da829c261891d14bab6ffc1bdd3322c, type: 2}
+--- !u!114 &-2726714887089294567
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}
+--- !u!114 &-2072089365244073314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 5.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}
 --- !u!114 &-715566391402002903
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,39 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f552628da7bba947b119e6d988dfd96, type: 3}
   m_Name: Pause Marker
   m_EditorClassIdentifier: Assembly-CSharp::PauseMarker
-  m_Time: 6
---- !u!114 &-523900262495882408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: 
-  VirtualCamera:
-    exposedName: 458f41595b338994dbcf455992c344e2
-    defaultValue: {fileID: 0}
---- !u!114 &-40323587075127967
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
-  DisplayName: 
-  VirtualCamera:
-    exposedName: 23670a5433fb1cd48a4c7ed05b2508bb
-    defaultValue: {fileID: 0}
+  m_Time: 4.583333333333333
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,17 +212,28 @@ MonoBehaviour:
   m_Version: 0
   m_Tracks:
   - {fileID: 1748864873335934430}
-  - {fileID: 1107721050741780532}
-  - {fileID: -8030247011874939441}
-  - {fileID: 4495806311418701602}
   - {fileID: -4078477030715440935}
   - {fileID: -5580414206305446137}
+  - {fileID: 7198274500929618300}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: -5412343561123940738}
+--- !u!114 &293877002441692732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f552628da7bba947b119e6d988dfd96, type: 3}
+  m_Name: Pause Marker
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMarker
+  m_Time: 5.833333333333333
 --- !u!114 &919645098455642360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,11 +246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
-  m_Time: 6
+  m_Time: 5.35
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: a4b2491cd870c384db65994b51edaffc, type: 2}
---- !u!114 &1107721050741780532
+--- !u!114 &1618483517446184300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,34 +259,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
-  m_Name: Signal Track
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects:
-    - {fileID: -7475689196990550203}
---- !u!114 &1741702376549836618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f552628da7bba947b119e6d988dfd96, type: 3}
-  m_Name: Pause Marker
-  m_EditorClassIdentifier: Assembly-CSharp::PauseMarker
-  m_Time: 2
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 7.266666666666667
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 0bb5300048a184844b0cc331ac4e02e5, type: 2}
 --- !u!114 &1748864873335934430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,7 +291,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 5575796188542202799}
-    m_Duration: 2
+    m_Duration: 1.25
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1748864873335934430}
     m_EaseInDuration: 0
@@ -342,10 +339,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CinemachineCamera
   - m_Version: 1
-    m_Start: 4
+    m_Start: 3.1
     m_ClipIn: 0
-    m_Asset: {fileID: -40323587075127967}
-    m_Duration: 2
+    m_Asset: {fileID: 5113588369706009990}
+    m_Duration: 1.8999999999999995
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1748864873335934430}
     m_EaseInDuration: 0
@@ -375,10 +372,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CinemachineCamera (1)
   - m_Version: 1
-    m_Start: 6
+    m_Start: 5
     m_ClipIn: 0
-    m_Asset: {fileID: -523900262495882408}
-    m_Duration: 4
+    m_Asset: {fileID: -4070172565223214387}
+    m_Duration: 4.916666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1748864873335934430}
     m_EaseInDuration: 0
@@ -387,7 +384,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -426,10 +441,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CinemachineCamera (3)
   - m_Version: 1
-    m_Start: 2
+    m_Start: 1.25
     m_ClipIn: 0
-    m_Asset: {fileID: 3022018020852867350}
-    m_Duration: 2
+    m_Asset: {fileID: 8044195230504906051}
+    m_Duration: 1.85
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1748864873335934430}
     m_EaseInDuration: 0
@@ -461,8 +476,25 @@ MonoBehaviour:
   m_Markers:
     m_Objects:
     - {fileID: -6646263696058336857}
+    - {fileID: -2072089365244073314}
   TrackPriority: 4
---- !u!114 &3022018020852867350
+--- !u!114 &4511497084226317784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 5.583333333333333
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 8da829c261891d14bab6ffc1bdd3322c, type: 2}
+--- !u!114 &5113588369706009990
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,31 +508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
   DisplayName: 
   VirtualCamera:
-    exposedName: 7bac1d59f1f08ad449e4bc2e86acd34a
+    exposedName: 2b7dec18db710cb4dad5ec86fe38471e
     defaultValue: {fileID: 0}
---- !u!114 &4495806311418701602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e0374501f39d54eb30235764636e0e, type: 3}
-  m_Name: Control Track
-  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.ControlTrack
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects: []
 --- !u!114 &5575796188542202799
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -517,6 +526,31 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: 4426b068c404df34bba5adec2fcfffe5
     defaultValue: {fileID: 0}
+--- !u!114 &7198274500929618300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
+  m_Name: Signal Track
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalTrack
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects:
+    - {fileID: -2726714887089294567}
+    - {fileID: 4511497084226317784}
 --- !u!114 &7657499319538288866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,4 +563,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f552628da7bba947b119e6d988dfd96, type: 3}
   m_Name: Pause Marker
   m_EditorClassIdentifier: Assembly-CSharp::PauseMarker
-  m_Time: 4
+  m_Time: 2.85
+--- !u!114 &8044195230504906051
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: 
+  VirtualCamera:
+    exposedName: 52a52c0642a61594396f669259092db2
+    defaultValue: {fileID: 0}
+--- !u!114 &8842704481603992259
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
+  m_Time: 5.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}

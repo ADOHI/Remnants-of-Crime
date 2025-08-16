@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 8da829c261891d14bab6ffc1bdd3322c, type: 2}
+    - {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -243,6 +244,20 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: Restrain
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 161552425}
+          m_TargetAssemblyTypeName: AnimatorTriggerProxy, Assembly-CSharp
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Attack
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &176057663
@@ -516,6 +531,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 0bb5300048a184844b0cc331ac4e02e5, type: 2}
+    - {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -529,6 +545,20 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: intro01
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2087842923}
+          m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+          m_MethodName: PlayById
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: intro_02
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &393956457
@@ -2875,6 +2905,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 34eaf65a33acd7e4dacccfd029a4d63c, type: 2}
+    - {fileID: 11400000, guid: 8da829c261891d14bab6ffc1bdd3322c, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -2888,6 +2919,20 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: ShootTrigger
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1219762978}
+          m_TargetAssemblyTypeName: AnimatorTriggerProxy, Assembly-CSharp
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Damaged
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &1219762978
@@ -3137,11 +3182,17 @@ PlayableDirector:
     value: {fileID: 1335595987}
   - key: {fileID: -5580414206305446137, guid: 84422445ab86fd54094946687eb9e6af, type: 2}
     value: {fileID: 161552426}
+  - key: {fileID: 7198274500929618300, guid: 84422445ab86fd54094946687eb9e6af, type: 2}
+    value: {fileID: 1219762977}
   m_ExposedReferences:
     m_References:
+    - 705a13f1a8f03384f8812b00234dbac2: {fileID: 558495437}
+    - 99cbbf0356ee7fe4288c9840b093a5da: {fileID: 1224415853}
+    - 52a52c0642a61594396f669259092db2: {fileID: 558495437}
     - 4426b068c404df34bba5adec2fcfffe5: {fileID: 176057664}
     - 458f41595b338994dbcf455992c344e2: {fileID: 1224415853}
     - 23670a5433fb1cd48a4c7ed05b2508bb: {fileID: 1359287638}
+    - 2b7dec18db710cb4dad5ec86fe38471e: {fileID: 1359287638}
     - 7bac1d59f1f08ad449e4bc2e86acd34a: {fileID: 558495437}
     - 0e54e918528521040be3118350512a11: {fileID: 1108739211}
 --- !u!4 &1335595985
@@ -12723,7 +12774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffaafd47ec7b35f4f956bdfca3d033b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueLoader
-  dialogueJson: {fileID: 4900000, guid: a083d548ead431c47a872c54a6b8c75d, type: 3}
+  dialogueJson: {fileID: 4900000, guid: 7d86b95508b794d49a7e43881b2997e9, type: 3}
 --- !u!4 &1866265509
 Transform:
   m_ObjectHideFlags: 0
@@ -12768,8 +12819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7c9128cf4ce7442a337eca5af106b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestScene
-  ui: {fileID: 1278447099}
-  loader: {fileID: 1866265508}
 --- !u!4 &1988032549
 Transform:
   m_ObjectHideFlags: 0
