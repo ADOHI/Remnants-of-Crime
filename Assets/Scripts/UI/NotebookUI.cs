@@ -176,23 +176,46 @@ public class NotebookUI : MonoBehaviour
         detailsPage = new GameObject("EvidenceDetails", typeof(RectTransform));
         detailsPage.transform.SetParent(background, false);
 
+        // 좌측 이미지
         GameObject leftPage = new GameObject("LeftPage", typeof(RectTransform));
         leftPage.transform.SetParent(detailsPage.transform, false);
         leftPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 0);
 
         var img = leftPage.AddComponent<Image>();
+        img.sprite = data.evidenceSprite;
         img.preserveAspect = true;
 
+        // 우측 텍스트
         GameObject rightPage = new GameObject("RightPage", typeof(RectTransform));
         rightPage.transform.SetParent(detailsPage.transform, false);
         rightPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(200, 0);
 
-        CreateUIText(data.evidenceName, rightPage.transform, new Vector2(0, 100), new Vector2(20, 10));
-        CreateUIText(data.description, rightPage.transform, Vector2.zero, new Vector2(20, 10));
+        CreateUIText(data.evidenceName, rightPage.transform, new Vector2(0, 120), new Vector2(20, 10));
+        CreateUIText(data.description, rightPage.transform, new Vector2(0, 40), new Vector2(20, 10));
+
+        // 패시브 설명
+        if (data.passiveSkill != null)
+        {
+            CreateUIText("패시브: " + data.passiveSkill.skillName, rightPage.transform, new Vector2(0, -40), new Vector2(20, 10));
+            CreateUIText(data.passiveSkill.description, rightPage.transform, new Vector2(0, -80), new Vector2(20, 10));
+        }
+
+        // 장착 버튼
+        GameObject equipBtn = CreateUIButton("장착하기", rightPage.transform, new Vector2(0, -150));
+        equipBtn.GetComponent<Button>().onClick.AddListener(() => EquipEvidence(data));
     }
 
-    // ====== 공용 UI 생성 ======
-    private GameObject CreateUIButton(string text, Transform parent, Vector2 anchoredPos)
+    private void EquipEvidence(EvidenceData data)
+    {
+        if (data.passiveSkill != null)
+        {
+            PassiveSkillManager.Instance.EquipSkill(data.passiveSkill);
+            Debug.Log($"[{data.evidenceName}] 장착 → 패시브 [{data.passiveSkill.skillName}] 발동!");
+        }
+    }
+
+// ====== 공용 UI 생성 ======
+private GameObject CreateUIButton(string text, Transform parent, Vector2 anchoredPos)
     {
         GameObject obj = new GameObject(text + "_Button", typeof(RectTransform), typeof(Image), typeof(Button));
         obj.transform.SetParent(parent, false);
