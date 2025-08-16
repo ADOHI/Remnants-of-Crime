@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b815c9813ec035a44acfd73e4fd669f7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324897
+  packageName: Abandoned SUV - Police / Sheriff / Fire Rescue
+  packageVersion: 1.0
+  assetPath: Assets/AbandonedCarsDriveable/Scripts/SirenLightController.cs
+  uploadId: 768435

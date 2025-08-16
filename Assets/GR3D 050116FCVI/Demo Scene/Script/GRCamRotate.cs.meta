@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a624669e12c132742b8595b52507ef0d
+timeCreated: 1454041800
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 63206
+  packageName: GR3D American Police Car 050116FCVI
+  packageVersion: 1.1
+  assetPath: Assets/GR3D 050116FCVI/Demo Scene/Script/GRCamRotate.cs
+  uploadId: 196591

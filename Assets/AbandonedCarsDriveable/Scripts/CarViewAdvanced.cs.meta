@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b5c41c20a08f1e747b4d94e2eacbb79c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324897
+  packageName: Abandoned SUV - Police / Sheriff / Fire Rescue
+  packageVersion: 1.0
+  assetPath: Assets/AbandonedCarsDriveable/Scripts/CarViewAdvanced.cs
+  uploadId: 768435

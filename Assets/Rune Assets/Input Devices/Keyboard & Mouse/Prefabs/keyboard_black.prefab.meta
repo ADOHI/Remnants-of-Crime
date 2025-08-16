@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dc820dfa13f4a9f408e29639ae1909e4
+timeCreated: 1499448877
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 70943
+  packageName: PC Keyboard & Mouse
+  packageVersion: 1.0
+  assetPath: Assets/Rune Assets/Input Devices/Keyboard & Mouse/Prefabs/keyboard_black.prefab
+  uploadId: 192221

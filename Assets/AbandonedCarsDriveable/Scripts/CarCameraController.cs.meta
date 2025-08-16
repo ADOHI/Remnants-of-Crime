@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d5b4c47a3201dcb458cbb62c6e9ffdfe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324897
+  packageName: Abandoned SUV - Police / Sheriff / Fire Rescue
+  packageVersion: 1.0
+  assetPath: Assets/AbandonedCarsDriveable/Scripts/CarCameraController.cs
+  uploadId: 768435

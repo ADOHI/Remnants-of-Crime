@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 97806d4ecac64bc47bf828a08e3d5bbd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 153779
+  packageName: The Alleyway | HDRP Asset Pack
+  packageVersion: 1.1
+  assetPath: Assets/NomadicRealms/TheAlleyway/Scripts/WindowConfiguration.cs
+  uploadId: 370099

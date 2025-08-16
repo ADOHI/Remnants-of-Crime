@@ -1,12 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class NotebookUI : MonoBehaviour
 {
-    public RectTransform background; // ¹é±×¶ó¿îµå(ºÎ¸ğ)
-    public PlayerStatsData playerStats; // ½ºÅÈ µ¥ÀÌÅÍ SO
-    public EvidenceData[] evidences; // Áõ°ÅÇ° µ¥ÀÌÅÍ
+    public RectTransform background; // ë°±ê·¸ë¼ìš´ë“œ(ë¶€ëª¨)
+    public PlayerStatsData playerStats; // ìŠ¤íƒ¯ ë°ì´í„° SO
+    public EvidenceData[] evidences; // ì¦ê±°í’ˆ ë°ì´í„°
+    public SpriteData spriteDatas;   // ì±…ê°ˆí”¼ìš© ìŠ¤í”„ë¼ì´íŠ¸
+    public TMP_FontAsset defaultFont; // ê¸°ë³¸ í°íŠ¸ (ì¸ìŠ¤í™í„°ì— ë„£ê¸°)
 
     private GameObject slotGrid;
     private GameObject detailsPage;
@@ -16,15 +18,17 @@ public class NotebookUI : MonoBehaviour
         CreateTabs();
     }
 
-    // ====== ÅÇ »ı¼º ======
+    // ====== íƒ­ ìƒì„± ======
     private void CreateTabs()
     {
-        string[] tabNames = { "½ºÅÈ °­È­", "Áõ°ÅÇ°", "¼³Á¤" };
+        string[] tabNames = { "ìŠ¤íƒ¯ ê°•í™”", "ì¦ê±°í’ˆ", "ì„¤ì •" };
         for (int i = 0; i < tabNames.Length; i++)
         {
-            GameObject btnObj = CreateUIButton(tabNames[i], background, new Vector2(-800, 200 - (i * 200)));
+            // ì±…ê°ˆí”¼ ë²„íŠ¼ë§Œ ìŠ¤í”„ë¼ì´íŠ¸ ì ìš©
+            GameObject btnObj = CreateUIButton(tabNames[i], background, new Vector2(-730, 200 - (i * 200)), true, spriteDatas.sprites[i]);
             int index = i;
             btnObj.GetComponent<Button>().onClick.AddListener(() => OnTabClick(index));
+            btnObj.GetComponent<RectTransform>().localScale = new Vector2(-1, 1);
         }
     }
 
@@ -32,10 +36,10 @@ public class NotebookUI : MonoBehaviour
     {
         if (index == 0) ShowStatsTab();
         else if (index == 1) ShowEvidenceList();
-        // index == 2 ¡æ ¼³Á¤
+        // index == 2 â†’ ì„¤ì •
     }
 
-    // ====== ½ºÅÈ °­È­ ÅÇ ======
+    // ====== ìŠ¤íƒ¯ ê°•í™” íƒ­ ======
     private void ShowStatsTab()
     {
         if (slotGrid != null) Destroy(slotGrid);
@@ -45,85 +49,75 @@ public class NotebookUI : MonoBehaviour
         slotGrid.transform.SetParent(background, false);
 
         var grid = slotGrid.AddComponent<GridLayoutGroup>();
-        grid.cellSize = new Vector2(200, 120);  // ½½·Ô Å©±â ³Ë³ËÈ÷
+        grid.cellSize = new Vector2(200, 200);
         grid.spacing = new Vector2(20, 20);
         grid.constraint = GridLayoutGroup.Constraint.FixedRowCount;
-        grid.constraintCount = 1; // °¡·Î·Î ¹èÄ¡
+        grid.constraintCount = 2;
 
         slotGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(-500, 100);
 
-        CreateStatSlot("Ã¼·Â (HP)", playerStats.hp,
+        CreateStatSlot("ì²´ë ¥ (HP)", playerStats.hp,
             () => { playerStats.hp = Mathf.Max(0, playerStats.hp - 10); RefreshStats(); },
             () => { playerStats.hp += 10; RefreshStats(); });
 
-        CreateStatSlot("½ºÅÂ¹Ì³ª", playerStats.stamina,
+        CreateStatSlot("ìŠ¤íƒœë¯¸ë‚˜", playerStats.stamina,
             () => { playerStats.stamina = Mathf.Max(0, playerStats.stamina - 5); RefreshStats(); },
             () => { playerStats.stamina += 5; RefreshStats(); });
 
-        CreateStatSlot("Çö±İ È¹µæ·ü", (playerStats.cashGainRate * 100f).ToString("F1") + "%",
+        CreateStatSlot("í˜„ê¸ˆ íšë“ë¥ ", (playerStats.cashGainRate * 100f).ToString("F1") + "%",
             () => { playerStats.cashGainRate = Mathf.Max(0, playerStats.cashGainRate - 0.1f); RefreshStats(); },
             () => { playerStats.cashGainRate += 0.1f; RefreshStats(); });
 
-        CreateStatSlot("°ø°İ·Â", playerStats.attack,
+        CreateStatSlot("ê³µê²©ë ¥", playerStats.attack,
             () => { playerStats.attack = Mathf.Max(0, playerStats.attack - 1); RefreshStats(); },
             () => { playerStats.attack += 1; RefreshStats(); });
     }
 
     private void CreateStatSlot(string label, object value, UnityEngine.Events.UnityAction onMinus, UnityEngine.Events.UnityAction onPlus)
     {
-        // ½½·Ô ¹è°æ
         GameObject slot = new GameObject("StatSlot", typeof(RectTransform), typeof(Image));
         slot.transform.SetParent(slotGrid.transform, false);
 
         var slotImg = slot.GetComponent<Image>();
-        slotImg.color = new Color(0.2f, 0.2f, 0.2f, 0.6f); // ¹İÅõ¸í È¸»ö ¹è°æ
+        slotImg.sprite = null; // ê¸°ë³¸ ë‹¨ìƒ‰
+        slotImg.color = new Color(1, 1, 1, 0.2f); // ì‚´ì§ íˆ¬ëª…í•œ í°ìƒ‰ ë°°ê²½
 
         var vLayout = slot.AddComponent<VerticalLayoutGroup>();
         vLayout.spacing = 10;
         vLayout.childAlignment = TextAnchor.MiddleCenter;
 
-        // ½ºÅÈ ÅØ½ºÆ®
-        CreateUIText($"{label}: {value}", slot.transform, Vector2.zero, new Vector2(180, 40));
+        // ìŠ¤íƒ¯ í…ìŠ¤íŠ¸
+        var text = CreateUIText($"{label}: {value}", slot.transform, Vector2.zero, new Vector2(180, 40));
+        text.GetComponent<RectTransform>().localScale = new Vector2(0.8f, 0.8f);
 
-        // ¹öÆ° ±×·ì
+        // ë²„íŠ¼ ê·¸ë£¹
         GameObject btnGroup = new GameObject("BtnGroup", typeof(RectTransform));
         btnGroup.transform.SetParent(slot.transform, false);
 
-        var btnGroupRect = btnGroup.GetComponent<RectTransform>();
         var hLayout = btnGroup.AddComponent<HorizontalLayoutGroup>();
-        hLayout.spacing = 20;
+        hLayout.spacing = 40;
         hLayout.childAlignment = TextAnchor.MiddleCenter;
 
-        // ¹öÆ° ±×·ì Å©±â °­Á¦
         var btnGroupLayout = btnGroup.AddComponent<LayoutElement>();
         btnGroupLayout.preferredHeight = 50;
-        btnGroupLayout.minHeight = 50;
 
-        // - ¹öÆ°
+        // - ë²„íŠ¼
         GameObject minusBtn = CreateUIButton("-", btnGroup.transform, Vector2.zero);
         minusBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(60, 40);
-        var minusLayout = minusBtn.AddComponent<LayoutElement>();
-        minusLayout.preferredWidth = 60;
-        minusLayout.preferredHeight = 40;
         minusBtn.GetComponent<Button>().onClick.AddListener(onMinus);
 
-        // + ¹öÆ°
+        // + ë²„íŠ¼
         GameObject plusBtn = CreateUIButton("+", btnGroup.transform, Vector2.zero);
         plusBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(60, 40);
-        var plusLayout = plusBtn.AddComponent<LayoutElement>();
-        plusLayout.preferredWidth = 60;
-        plusLayout.preferredHeight = 40;
         plusBtn.GetComponent<Button>().onClick.AddListener(onPlus);
     }
-
-
 
     private void RefreshStats()
     {
         ShowStatsTab();
     }
 
-    // ====== Áõ°ÅÇ° ¸ñ·Ï ======
+    // ====== ì¦ê±°í’ˆ ëª©ë¡ ======
     private void ShowEvidenceList()
     {
         if (slotGrid != null) Destroy(slotGrid);
@@ -157,6 +151,7 @@ public class NotebookUI : MonoBehaviour
         GameObject imgObj = new GameObject("Image", typeof(RectTransform));
         imgObj.transform.SetParent(slot.transform, false);
         var img = imgObj.AddComponent<Image>();
+        img.sprite = data.evidenceSprite; // ì¦ê±°í’ˆì€ ì›ë˜ ìŠ¤í”„ë¼ì´íŠ¸
         img.preserveAspect = true;
         imgObj.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
 
@@ -176,7 +171,7 @@ public class NotebookUI : MonoBehaviour
         detailsPage = new GameObject("EvidenceDetails", typeof(RectTransform));
         detailsPage.transform.SetParent(background, false);
 
-        // ÁÂÃø ÀÌ¹ÌÁö
+        // ì¢Œì¸¡ ì´ë¯¸ì§€
         GameObject leftPage = new GameObject("LeftPage", typeof(RectTransform));
         leftPage.transform.SetParent(detailsPage.transform, false);
         leftPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 0);
@@ -185,23 +180,21 @@ public class NotebookUI : MonoBehaviour
         img.sprite = data.evidenceSprite;
         img.preserveAspect = true;
 
-        // ¿ìÃø ÅØ½ºÆ®
+        // ìš°ì¸¡ í…ìŠ¤íŠ¸
         GameObject rightPage = new GameObject("RightPage", typeof(RectTransform));
         rightPage.transform.SetParent(detailsPage.transform, false);
         rightPage.GetComponent<RectTransform>().anchoredPosition = new Vector2(200, 0);
 
-        CreateUIText(data.evidenceName, rightPage.transform, new Vector2(0, 120), new Vector2(20, 10));
-        CreateUIText(data.description, rightPage.transform, new Vector2(0, 40), new Vector2(20, 10));
+        CreateUIText(data.evidenceName, rightPage.transform, new Vector2(150, 120), new Vector2(100, 50));
+        CreateUIText(data.description, rightPage.transform, new Vector2(150, 40), new Vector2(200, 50));
 
-        // ÆĞ½Ãºê ¼³¸í
         if (data.passiveSkill != null)
         {
-            CreateUIText("ÆĞ½Ãºê: " + data.passiveSkill.skillName, rightPage.transform, new Vector2(0, -40), new Vector2(20, 10));
-            CreateUIText(data.passiveSkill.description, rightPage.transform, new Vector2(0, -80), new Vector2(20, 10));
+            CreateUIText("íŒ¨ì‹œë¸Œ: " + data.passiveSkill.skillName, rightPage.transform, new Vector2(150, -40), new Vector2(250, 50));
+            CreateUIText(data.passiveSkill.description, rightPage.transform, new Vector2(150, -80), new Vector2(250, 50));
         }
 
-        // ÀåÂø ¹öÆ°
-        GameObject equipBtn = CreateUIButton("ÀåÂøÇÏ±â", rightPage.transform, new Vector2(0, -150));
+        GameObject equipBtn = CreateUIButton("ì¥ì°©í•˜ê¸°", rightPage.transform, new Vector2(150, -150));
         equipBtn.GetComponent<Button>().onClick.AddListener(() => EquipEvidence(data));
     }
 
@@ -210,16 +203,33 @@ public class NotebookUI : MonoBehaviour
         if (data.passiveSkill != null)
         {
             PassiveSkillManager.Instance.EquipSkill(data.passiveSkill);
-            Debug.Log($"[{data.evidenceName}] ÀåÂø ¡æ ÆĞ½Ãºê [{data.passiveSkill.skillName}] ¹ßµ¿!");
+            Debug.Log($"[{data.evidenceName}] ì¥ì°© â†’ íŒ¨ì‹œë¸Œ [{data.passiveSkill.skillName}] ë°œë™!");
         }
     }
 
-// ====== °ø¿ë UI »ı¼º ======
-private GameObject CreateUIButton(string text, Transform parent, Vector2 anchoredPos)
+    // ====== ê³µìš© UI ìƒì„± ======
+    private GameObject CreateUIButton(string text, Transform parent, Vector2 anchoredPos, bool useSprite = false, Sprite sprite = null)
     {
         GameObject obj = new GameObject(text + "_Button", typeof(RectTransform), typeof(Image), typeof(Button));
         obj.transform.SetParent(parent, false);
-        CreateUIText(text, obj.transform, Vector2.zero, new Vector2(20, 10));
+
+        var img = obj.GetComponent<Image>();
+        if (useSprite && sprite != null) img.sprite = sprite;
+        else
+        {
+            img.sprite = null; // ê¸°ë³¸ ë‹¨ìƒ‰ ë²„íŠ¼
+            img.color = new Color(1, 1, 1, 0.2f);
+        }
+
+        // ë²„íŠ¼ í…ìŠ¤íŠ¸
+        var textObj = CreateUIText(text, obj.transform, Vector2.zero, new Vector2(50, 50));
+
+        // ì±…ê°ˆí”¼ ë²„íŠ¼ì€ ë’¤ì§‘íŒ ìƒíƒœ â†’ í…ìŠ¤íŠ¸ë§Œ ë‹¤ì‹œ ì •ë°©í–¥ ë³´ì •
+        if (useSprite)
+        {
+            textObj.GetComponent<RectTransform>().localScale = new Vector2(-1, 1);
+        }
+
         obj.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
         return obj;
     }
@@ -228,9 +238,11 @@ private GameObject CreateUIButton(string text, Transform parent, Vector2 anchore
     {
         GameObject obj = new GameObject("Text", typeof(RectTransform));
         obj.transform.SetParent(parent, false);
-        var tmp = obj.AddComponent<TextMeshProUGUI>();
 
+        var tmp = obj.AddComponent<TextMeshProUGUI>();
         tmp.text = text;
+        tmp.font = defaultFont; // ê¸°ë³¸ í°íŠ¸
+        tmp.color = Color.black; // âœ… ê¸°ë³¸ìƒ‰ ê²€ì •
         tmp.enableAutoSizing = true;
         tmp.alignment = TextAlignmentOptions.Center;
 
@@ -238,4 +250,5 @@ private GameObject CreateUIButton(string text, Transform parent, Vector2 anchore
         obj.GetComponent<RectTransform>().sizeDelta = size;
         return obj;
     }
+
 }

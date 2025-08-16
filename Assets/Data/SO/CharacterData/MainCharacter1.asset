@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5429a86c46211764b82c980d3a72bbe5, type: 3}
+  m_Name: MainCharacter1
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterID: 1
+  characterName: "\uC8FC\uC778\uACF5"
+  portrait: {fileID: 21300000, guid: aa7f1fcd1f18e37469fe168ac645fb2f, type: 3}
+  expressions:
+  - {fileID: 21300000, guid: 3eb34d85b46b8a548916fd3911bdc211, type: 3}
+  - {fileID: 21300000, guid: 841602412d0399949b4930fe9737b6f4, type: 3}
+  - {fileID: 21300000, guid: 175e68e7ce6b57a44862cef589b4fee3, type: 3}
+  - {fileID: 21300000, guid: ae777e1a07db7c343a44ce2325d04b07, type: 3}
+  - {fileID: 21300000, guid: 4cf28a5323919ca459d6cec9c8bb8da8, type: 3}
+  - {fileID: 21300000, guid: 930d457b88dce4b45859241351c3847d, type: 3}
+  - {fileID: 21300000, guid: 7507cc39d39464343b3d3916bc666048, type: 3}
+  Discription: '1
+
+    2
+
+    3
+
+    4
+
+    5'

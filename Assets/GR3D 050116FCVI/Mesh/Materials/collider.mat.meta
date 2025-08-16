@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f90933035c2fb7242ae6097209a190d7
+timeCreated: 1462674317
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 63206
+  packageName: GR3D American Police Car 050116FCVI
+  packageVersion: 1.1
+  assetPath: Assets/GR3D 050116FCVI/Mesh/Materials/collider.mat
+  uploadId: 196591

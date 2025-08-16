@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 
 public class DialogueUI : MonoBehaviour
 {
+    [Header("UI References")]
     public Image characterPortrait;
     public TMP_Text nameText;
     public TMP_Text dialogueText;
+    public CanvasGroup dialogueCanvas;
+    public Image backgroundPanel;   // ✅ 대화창 배경 패널 추가
+
+    [Header("Typing Settings")]
     public float typeSpeed = 0.05f;
 
     public bool IsPlaying { get; private set; }
-
-    public CanvasGroup dialogueCanvas;
 
     private bool isTyping = false;
     private bool isNextRequested = false;
     private string currentSentence = "";
     private Coroutine typingCoroutine;
+
+    // 이벤트
+    public event Action OnDialogueLineEnd;
+    public event Action OnDialogueAllEnd;
 
     private void Awake()
     {
@@ -26,35 +34,69 @@ public class DialogueUI : MonoBehaviour
             dialogueCanvas.alpha = 0f;
             dialogueCanvas.blocksRaycasts = false;
         }
+
+        if (backgroundPanel != null)
+        {
+            backgroundPanel.gameObject.SetActive(false); // 시작 시 숨김
+        }
     }
 
-    public IEnumerator ShowDialogue(CharacterData charData, string[] sentences, bool autoNext = false)
+    private void Update()
     {
+        // 👉 입력은 여기서만 받는다
+        if (IsPlaying && Input.GetKeyDown(KeyCode.Space))
+        {
+            SkipOrNext();
+        }
+    }
+
+    public IEnumerator ShowDialogue(CharacterData charData, DialogueLine[] lines, bool autoNext = false)
+    {
+        StopAllCoroutines();
+        IsPlaying = true;
+
         if (dialogueCanvas != null)
         {
             dialogueCanvas.alpha = 1f;
             dialogueCanvas.blocksRaycasts = true;
         }
 
-        characterPortrait.sprite = charData.portrait;
+        if (backgroundPanel != null)
+        {
+            backgroundPanel.gameObject.SetActive(true); // ✅ 대화 시작 시 보이기
+        }
+
         nameText.text = charData.characterName;
 
-        foreach (var sentence in sentences)
+        foreach (var line in lines)
         {
-            currentSentence = sentence;
-            typingCoroutine = StartCoroutine(TypeSentence(sentence));
+            // 표정 적용
+            if (line.expression >= 0 && line.expression < charData.expressions.Length)
+                characterPortrait.sprite = charData.expressions[line.expression];
+            else
+                characterPortrait.sprite = charData.portrait;
+
+            currentSentence = line.text;
+
+            if (typingCoroutine != null)
+                StopCoroutine(typingCoroutine);
+
+            typingCoroutine = StartCoroutine(TypeSentence(line.text));
             yield return typingCoroutine;
 
             if (!autoNext)
             {
                 isNextRequested = false;
-                while (!isNextRequested)
+                while (!isNextRequested) // 스페이스 입력 기다림
                     yield return null;
             }
             else
             {
                 yield return new WaitForSeconds(0.5f);
             }
+
+            // ✅ 줄 끝났을 때 이벤트 호출
+            OnDialogueLineEnd?.Invoke();
         }
 
         if (dialogueCanvas != null)
@@ -62,11 +104,18 @@ public class DialogueUI : MonoBehaviour
             dialogueCanvas.alpha = 0f;
             dialogueCanvas.blocksRaycasts = false;
         }
+
+        if (backgroundPanel != null)
+        {
+            backgroundPanel.gameObject.SetActive(false); // ✅ 대화 끝나면 숨기기
+        }
+
+        IsPlaying = false;
+        OnDialogueAllEnd?.Invoke();
     }
 
     private IEnumerator TypeSentence(string sentence)
     {
-        IsPlaying = true;
         isTyping = true;
         dialogueText.text = "";
 
@@ -75,27 +124,24 @@ public class DialogueUI : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
 
-            if (!isTyping) // 스킵된 경우
-                break;
+            if (!isTyping) break; // 스킵 시 즉시완성
         }
 
-        // 즉시완성 시에도 전체 문장 출력 보장
         dialogueText.text = currentSentence;
         isTyping = false;
-        IsPlaying = false;
     }
 
     public void SkipOrNext()
     {
+        if (!IsPlaying) return;
+
         if (isTyping)
         {
-            // 타이핑 중이면 즉시완성
-            isTyping = false;
+            isTyping = false; // 즉시완성
         }
         else
         {
-            // 이미 완성된 상태면 다음 문장으로 이동 요청
-            isNextRequested = true;
+            isNextRequested = true; // 다음 줄로
         }
     }
 }

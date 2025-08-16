@@ -12,7 +12,7 @@ public class DialogueLoader : MonoBehaviour
         database = JsonUtility.FromJson<DialogueDatabase>(wrappedJson);
     }
 
-    public DialogueData GetDialogueById(string id)
+    public DialogueData GetDialogueByID(string id)
     {
         foreach (var dialogue in database.dialogues)
         {

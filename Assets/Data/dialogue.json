@@ -2,16 +2,158 @@
     {
         "id": "intro01",
         "lines": [
-            { "characterID": "1", "text": "안녕하세요! 여기는 시작 마을입니다." },
-            { "characterID": "2", "text": "오! 새로운 모험가로군요?" },
-            { "characterID": "1", "text": "네! 잘 부탁드립니다." }
+            {"characterID": "2", "expression": 0,"text": "지문, 너 거야… 이거 어떻게 된 거지?"},
+            { "characterID": "1", "expression": 0,"text": "난 하지 않았어. 누군가 날 함정에 빠뜨린 거야." },
+            { "characterID": "3", "expression": 2,"text": "듣지 마! 동료를 죽인 초능력자 놈한테 말할 시간 줄 이유 없어!" }
         ]
     },
     {
-        "id": "quest_accept",
+        "id": "intro_QTE",
         "lines": [
-            { "characterID": "2", "text": "이 퀘스트를 받아주시겠습니까?" },
-            { "characterID": "1", "text": "네! 바로 시작하겠습니다." }
+            { "characterID": "2",  "expression": 5,"text": "윽!" },
+            { "characterID": "3",  "expression": 2,"text": "봐라! 저놈이 우리를 공격했다고!" }
+        ]
+    },
+    {
+        "id": "intro_Battle_end",
+        "lines": [
+            {"characterID": "1", "expression": 0,"text": "…젠장."}
+        ]
+    },
+    {
+        "id": "intro_Radio",
+        "lines": [
+            {"characterID": "4", "expression": 0,"text": "동료 형사 살해 혐의를 받고 있는 ○○서 소속 모 형사가 체포를 거부한 채 도주한 지 벌써 일주일이 지났습니다."},
+            { "characterID": "4", "expression": 0, "text": "경찰은 시 전역에 수색망을 확대하며, 시민들의 적극적인 제보를 요청하고 있습니다." }
+        ]
+    },
+    {
+        "id": "first_Partner",
+        "lines": [
+            {
+                "characterID": "5",
+                "expression": 5,
+                "text": "신입! 늦었잖아. 나 여기서 얼어 죽을 뻔했다고."
+            },
+            {
+                "characterID": "1",
+                "expression": 0,
+                "text": "......"
+            },
+            {
+                "characterID": "5",
+                "expression": 3,
+                "text": "......에휴 됐다."
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "이번 건, 초능력이 쓰인 살인사건이야. 피해자는 하늘에서 떨어진 쇠꼬챙이에 관통돼 즉사했어."
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "용의자는 잡혔지만, 증거가 부족해 풀려나기 직전이야."
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "게다가 아버지가 정치권 핵심이라 정식 수사팀은 윗선에서 전부 묶여버렸다더라?"
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "하지만 그놈이 잘못 건드린 게 있었지. 피해자의 의형제가 뒷세계를 주름잡는 조직의 이인자였으니까"
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "그래서… 우리 같은 뒷세계의 사냥개들이 움직이는거야."
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "사건의 증거품을 찾으면.. 그놈이 진짜 범인인지 알수 있겠지."
+            },
+            {
+                "characterID": "5",
+                "expression": 0,
+                "text": "호위나 제대로 해줘."
+            }
+        ]
+    },
+    {
+        "id": "first_Partner_2",
+        "lines": [
+            {
+                "characterID": "5",
+                "expression": 4,
+                "text": "으으음…? 이거 뭔가 이상한데?"
+            }
+        ]
+    },
+    {
+        "id": "first_Partner_3",
+        "lines": [
+            {"characterID": "5","expression": 2,"text": "이 증거물. 사건과 전혀 관계없는 물건이잖아! 전혀 관계없는 장면만 봤다구."},
+            { "characterID": "5","expression": 2, "text": "완전 가짜정보잖아. 대체 누가 이걸 증거품이라고 한거야?" }
+        ]
+    },
+    {
+        "id": "first_Partner_4",
+        "lines": [
+            {"characterID": "1","expression": 0,"text": "너도 그 녀석이 범인이라고 생각하나?"},
+            { "characterID": "5","expression": 0, "text": "글쎄. 범인인지는 아직 몰라." },
+            { "characterID": "5","expression": 0, "text": "하지만 한 가지는 확실해… 결말이 좋을 리 없다는 거." },
+            { "characterID": "5","expression": 0, "text": "우리같은 사람들이 맡게 되는 사건은… 절대 평범하지 않으니까." },
+            { "characterID": "1","expression": 0, "text": "......" },
+            { "characterID": "5","expression": 0, "text": "그러니까, 신입." },
+            { "characterID": "5","expression": 0, "text": "단단히 각오해. 여기선 별별 사건을 다 겪게 될 거야." },
+            { "characterID": "5","expression": 0, "text": "어딘가에서 칼이 날아올수도 있고 말이지." }
+        ]
+    },
+    {
+        "id": "second_QTE",
+        "lines": [
+            {"characterID": "5","expression": 0,"text": "거봐. 내말이 맞지?"}
+        ]
+    },
+    {
+        "id": "second_Battle",
+        "lines": [
+            {"characterID": "5","expression": 0,"text": "아 맞아. 아까준 컵에도 과거기억 확인을 했어. 찾던 범인의 능력은 아니지만 어쨌거나 도움이 될꺼야."}
+        ]
+    },
+    {
+        "id": "second_Battle_end",
+        "lines": [
+            {"characterID": "1","expression": 3,"text": "후우.."},
+            {"characterID": "1","expression": 3,"text": "정말 쉽지않군.."}
+            ]
+    },
+    {
+        "id": "flashback",
+        "lines": [
+            {"characterID": "9","expression": 0,"text": "이봐 형사."},
+            {"characterID": "1","expression": 6,"text": "...!"},
+            {"characterID": "9","expression": 0,"text": "이런 뒷골목에 숨은것은 별로 좋지못한 선택이야 형사."},
+            {"characterID": "9","expression": 0,"text": "이렇게 찾기 쉬우니까."},
+            {"characterID": "9","expression": 0,"text": "......."},
+            {"characterID": "9","expression": 0,"text": "뉴스에서 요란하더군. ‘동료를 죽이고 달아난 살인자’, ‘초능력자일지도 모르는 위험한 놈’…"},
+            {"characterID": "1","expression": 0,"text": "......"},
+            {"characterID": "9","expression": 0,"text": "솔직히 진실이 뭔진 상관없어. 네가 진짜 범인이건, 아니면 억울한 희생양이건 말이지."},
+            {"characterID": "9","expression": 0,"text": "중요한 건… 현직 형사가 둥지에서 쫓겨나, 이렇게 어두운 뒷골목에서 혼자 있다는 거야."},
+            {"characterID": "1","expression": 4,"text": "...!"},
+            {"characterID": "9","expression": 1,"text": "어이쿠, 싸우러 온 건 아니야. 제안을 하러 왔지."},
+            {"characterID": "9","expression": 0,"text": "요즘 넘쳐나는 초능력 범죄, 우리 같은 뒷세계 조직에서도 골칫거리야. 뒷세계에도 나름의 룰이 있지만, 그걸 무시하는 놈들이 너무 많아."},
+            {"characterID": "9","expression": 0,"text": "뒷세계를 흐리는 놈은 뒷세계의 법으로 처벌해야지.."},
+            {"characterID": "9","expression": 3,"text": "문제는… 이런 놈들은 숨어버리면 잡아낼 방법이 거의 없다는 거야. 우리 같은 놈들은 그저 당하기만 하지."},
+            {"characterID": "9","expression": 0,"text": "그래서 필요한 거야. 수사 능력이 있는 놈. 그리고 뒷세계와 손을 잡을 만큼 절박한 놈."},
+            {"characterID": "9","expression": 0,"text": "혹시 모르지… 네가 진짜 범인이 아니라면, 언젠간 그 진짜 놈과 마주하게 될지도."},
+            {"characterID": "9","expression": 1,"text": "어떤가? 이 스카우트 제안. 매력적이지 않나?"},
+            {"characterID": "1","expression": 0,"text": "…이거 협박인가?"},
+            {"characterID": "9","expression": 0,"text": "협박이라… 이건 기회지."},
+            {"characterID": "9","expression": 1,"text": "추락한 네가 잡을 수 있는 유일한 기회."}
         ]
     }
 ]

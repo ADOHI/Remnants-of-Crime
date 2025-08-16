@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 7638b3b8f83010a41a19a08a3b76a3ba
+timeCreated: 1462675145
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: antenae
+    100004: body
+    100006: bumper bar lights
+    100008: bumper bars
+    100010: center console
+    100012: dial fuel
+    100014: dial speedo
+    100016: dial tach
+    100018: gun rack
+    100020: interior
+    100022: laptop
+    100024: laptop stand
+    100026: license plates front
+    100028: license plates rear
+    100030: light lft
+    100032: light rt
+    100034: mirror
+    100036: mirror lft
+    100038: mirror lights
+    100040: mirror rt
+    100042: partition
+    100044: prisoner seats
+    100046: radio
+    100048: siren control
+    100050: spotlight  rt
+    100052: spotlight lft
+    100054: steering wheel
+    100056: top light bar
+    100058: Whl HD RL
+    100060: Whl HD RR
+    100062: Whl HD_FL
+    100064: Whl HD_FR
+    100066: gun
+    400000: //RootNode
+    400002: antenae
+    400004: body
+    400006: bumper bar lights
+    400008: bumper bars
+    400010: center console
+    400012: dial fuel
+    400014: dial speedo
+    400016: dial tach
+    400018: gun rack
+    400020: interior
+    400022: laptop
+    400024: laptop stand
+    400026: license plates front
+    400028: license plates rear
+    400030: light lft
+    400032: light rt
+    400034: mirror
+    400036: mirror lft
+    400038: mirror lights
+    400040: mirror rt
+    400042: partition
+    400044: prisoner seats
+    400046: radio
+    400048: siren control
+    400050: spotlight  rt
+    400052: spotlight lft
+    400054: steering wheel
+    400056: top light bar
+    400058: Whl HD RL
+    400060: Whl HD RR
+    400062: Whl HD_FL
+    400064: Whl HD_FR
+    400066: gun
+    2300000: antenae
+    2300002: body
+    2300004: bumper bar lights
+    2300006: bumper bars
+    2300008: center console
+    2300010: dial fuel
+    2300012: dial speedo
+    2300014: dial tach
+    2300016: gun rack
+    2300018: interior
+    2300020: laptop
+    2300022: laptop stand
+    2300024: license plates front
+    2300026: license plates rear
+    2300028: light lft
+    2300030: light rt
+    2300032: mirror
+    2300034: mirror lft
+    2300036: mirror lights
+    2300038: mirror rt
+    2300040: partition
+    2300042: prisoner seats
+    2300044: radio
+    2300046: siren control
+    2300048: spotlight  rt
+    2300050: spotlight lft
+    2300052: steering wheel
+    2300054: top light bar
+    2300056: Whl HD RL
+    2300058: Whl HD RR
+    2300060: Whl HD_FL
+    2300062: Whl HD_FR
+    2300064: gun
+    3300000: antenae
+    3300002: body
+    3300004: bumper bar lights
+    3300006: bumper bars
+    3300008: center console
+    3300010: dial fuel
+    3300012: dial speedo
+    3300014: dial tach
+    3300016: gun rack
+    3300018: interior
+    3300020: laptop
+    3300022: laptop stand
+    3300024: license plates front
+    3300026: license plates rear
+    3300028: light lft
+    3300030: light rt
+    3300032: mirror
+    3300034: mirror lft
+    3300036: mirror lights
+    3300038: mirror rt
+    3300040: partition
+    3300042: prisoner seats
+    3300044: radio
+    3300046: siren control
+    3300048: spotlight  rt
+    3300050: spotlight lft
+    3300052: steering wheel
+    3300054: top light bar
+    3300056: Whl HD RL
+    3300058: Whl HD RR
+    3300060: Whl HD_FL
+    3300062: Whl HD_FR
+    3300064: gun
+    4300000: body
+    4300002: Whl HD RR
+    4300004: Whl HD_FR
+    4300006: interior
+    4300008: prisoner seats
+    4300010: bumper bars
+    4300012: top light bar
+    4300014: antenae
+    4300016: spotlight lft
+    4300018: light lft
+    4300020: mirror lights
+    4300022: bumper bar lights
+    4300024: steering wheel
+    4300026: partition
+    4300028: center console
+    4300030: siren control
+    4300032: radio
+    4300034: laptop
+    4300036: laptop stand
+    4300038: gun rack
+    4300040: mirror
+    4300042: mirror rt
+    4300044: mirror lft
+    4300046: Whl HD RL
+    4300048: Whl HD_FL
+    4300050: spotlight  rt
+    4300052: light rt
+    4300054: dial tach
+    4300056: dial speedo
+    4300058: dial fuel
+    4300060: license plates rear
+    4300062: license plates front
+    4300064: gun
+    7400000: modo_Anim
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 63206
+  packageName: GR3D American Police Car 050116FCVI
+  packageVersion: 1.1
+  assetPath: Assets/GR3D 050116FCVI/Mesh/050116FCVI_HD.fbx
+  uploadId: 196591

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 09ec0a827e2442c42abc0a2089e98e85
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324897
+  packageName: Abandoned SUV - Police / Sheriff / Fire Rescue
+  packageVersion: 1.0
+  assetPath: Assets/AbandonedCarsDriveable/Scripts/CoroutineRunner.cs
+  uploadId: 768435
