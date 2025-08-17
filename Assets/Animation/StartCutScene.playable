@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f552628da7bba947b119e6d988dfd96, type: 3}
   m_Name: Pause Marker
   m_EditorClassIdentifier: Assembly-CSharp::PauseMarker
-  m_Time: 2.85
+  m_Time: 1.4
 --- !u!114 &8044195230504906051
 MonoBehaviour:
   m_ObjectHideFlags: 1

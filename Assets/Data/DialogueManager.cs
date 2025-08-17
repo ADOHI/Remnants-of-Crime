@@ -9,21 +9,22 @@ public class DialogueManager : MonoBehaviour
     public DialogueUI ui;
     public PlayableDirector director;   // 타임라인 디렉터
 
-    Coroutine playing;
+    private Coroutine playing;
+    private bool waitingForResume = false;
 
     private void Awake()
     {
-        // ✅ 줄 끝났을 때 타임라인 Resume
-        ui.OnDialogueLineEnd += () =>
-        {
-            if (director != null)
-            {
-                director.Resume();
-            }
-        };
+        // ✅ 대사 한 줄 끝났을 때 호출
+        ui.OnDialogueLineEnd += OnDialogueLineFinished;
     }
 
-    public void PlayById(string dialogueId)
+    private void OnDestroy()
+    {
+        if (ui != null)
+            ui.OnDialogueLineEnd -= OnDialogueLineFinished;
+    }
+
+    public void PlayByID(string dialogueId)
     {
         var data = loader.GetDialogueByID(dialogueId);
         if (data == null) return;
@@ -39,12 +40,36 @@ public class DialogueManager : MonoBehaviour
             var charData = dataManager.GetCharacterData(line.characterID);
             if (charData == null) continue;
 
-            // 한 줄 출력 (UI에서 스페이스 입력 관리)
+            // UI에서 대사 출력 및 입력 관리
             yield return ui.ShowDialogue(charData, new DialogueLine[] { line }, autoNext: false);
 
-            // 👉 Resume은 UI 이벤트(OnDialogueLineEnd)에서 처리되므로 여기서는 안 해도 됨
+            // 👉 Resume은 OnDialogueLineFinished 에서만 처리
+            // PauseMarker에 걸려 있으면, 별도의 입력 대기 코루틴에서 Resume 시도
         }
 
         playing = null;
     }
+
+    private void OnDialogueLineFinished()
+    {
+        if (director == null) return;
+
+        if (!waitingForResume)
+        {
+            waitingForResume = true;
+            StartCoroutine(WaitForResumeInput());
+        }
+    }
+
+    private IEnumerator WaitForResumeInput()
+    {
+        // PauseMarker 도달 시까지 기다림
+        // PauseMarker가 없으면 그냥 이 코루틴은 끝나지 않고 영향 없음
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+
+        // 👉 Resume 시도 (PauseMarker에 걸려있다면 정상 동작)
+        director.Resume();
+        waitingForResume = false;
+    }
+
 }

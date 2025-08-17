@@ -11,7 +11,7 @@ public class DialogueSignalReceiver : MonoBehaviour, INotificationReceiver
         {
             if (dialogueManager != null)
             {
-                dialogueManager.PlayById(signal.DialogueID);
+                dialogueManager.PlayByID(signal.DialogueID);
             }
             else
             {

@@ -123,13 +123,13 @@ public class DialogueUI : MonoBehaviour
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
-
-            if (!isTyping) break; // 스킵 시 즉시완성
         }
 
+        // 무조건 끝까지 출력
         dialogueText.text = currentSentence;
         isTyping = false;
     }
+
 
     public void SkipOrNext()
     {
@@ -137,7 +137,7 @@ public class DialogueUI : MonoBehaviour
 
         if (isTyping)
         {
-            isTyping = false; // 즉시완성
+
         }
         else
         {
