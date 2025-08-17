@@ -16,13 +16,14 @@ MonoBehaviour:
   characterName: "\uC8FC\uC778\uACF5"
   portrait: {fileID: 21300000, guid: aa7f1fcd1f18e37469fe168ac645fb2f, type: 3}
   expressions:
-  - {fileID: 21300000, guid: 3eb34d85b46b8a548916fd3911bdc211, type: 3}
+  - {fileID: 21300000, guid: 3ebef6733d5f9194e8549cf7de37b0da, type: 3}
   - {fileID: 21300000, guid: 841602412d0399949b4930fe9737b6f4, type: 3}
-  - {fileID: 21300000, guid: 175e68e7ce6b57a44862cef589b4fee3, type: 3}
+  - {fileID: 21300000, guid: 135644bac47b7b84b8b1a2052ac0e0f7, type: 3}
   - {fileID: 21300000, guid: ae777e1a07db7c343a44ce2325d04b07, type: 3}
-  - {fileID: 21300000, guid: 4cf28a5323919ca459d6cec9c8bb8da8, type: 3}
+  - {fileID: 21300000, guid: e850e0ccc18be3c488293a36a5e113f2, type: 3}
   - {fileID: 21300000, guid: 930d457b88dce4b45859241351c3847d, type: 3}
   - {fileID: 21300000, guid: 7507cc39d39464343b3d3916bc666048, type: 3}
+  - {fileID: 21300000, guid: 668d018e0c996b44995cd856fff24a7f, type: 3}
   Discription: '1
 
     2

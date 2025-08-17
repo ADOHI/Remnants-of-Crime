@@ -31,136 +31,175 @@
             { "characterID": "4", "expression": 0, "text": "경찰 관계자는 시 전역에 수색망을 설치할 계획따윈 없다면서, 어차피 샌드위치 훔쳐 먹은 놈 정도는 알아서 잡히겠지’라며, 필요 없는 대머리는 안 찾겠다고 밝혔습니다." }
         ]
     },
-    {
-        "id": "first_Partner",
-        "lines": [
-            {
-                "characterID": "5",
-                "expression": 5,
-                "text": "신입! 늦었잖아. 나 여기서 얼어 죽을 뻔했다고."
-            },
-            {
-                "characterID": "1",
-                "expression": 0,
-                "text": "......"
-            },
-            {
-                "characterID": "5",
-                "expression": 3,
-                "text": "......에휴 됐다."
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "이번 건, 초능력이 쓰인 사건이야. 피해자는 하늘에서 갑작스럽게 나타난 괴인에의해 들고있던 샌드위치를 빼았겼어."
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "용의자는 그대로 도주, 도주 속도나 피지컬로봐서는 육체계 초능력자로 여겨진다네."
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "게다가 경찰과 연줄이있는지 관련 사건수사를 거부하고 있어."
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "하지만 그놈이 잘못 건드린 게 있었지. 피해자의 의형제가 뒷세계를 주름잡는 조직의 이인자였으니까"
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "하지만 그놈이 잘못 건드린 게 있었지. 피해자의 의형제가 뒷세계를 주름잡는 조직의 넘버 투였거든. 그래서 우리가 나선 거야… 이름하여 뒷세계의 사냥개."
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "사건의 증거품을 찾으면.. 그놈이 진짜 범인인지 알수 있겠지."
-            },
-            {
-                "characterID": "5",
-                "expression": 0,
-                "text": "호위나 제대로 해줘."
-            }
-        ]
-    },
-    {
-        "id": "first_Partner_2",
-        "lines": [
-            {
-                "characterID": "5",
-                "expression": 4,
-                "text": "으으음…? 이거 뭔가 이상한데?"
-            }
-        ]
-    },
-    {
-        "id": "first_Partner_3",
-        "lines": [
-            {"characterID": "5","expression": 2,"text": "이 텀블러 짝퉁이잖아. 난 진품만 취급한다고. 짝퉁은 쓸모없다구"},
-            { "characterID": "5","expression": 2, "text": "완전 가짜정보잖아. 대체 누가 이걸 증거품이라고 한거야?" }
-        ]
-    },
-    {
-        "id": "first_Partner_4",
-        "lines": [
-            {"characterID": "1","expression": 0,"text": "......"},
-            { "characterID": "5","expression": 2, "text": "오늘은 완전히 조사 헛쳤어.. 하루종일 고생만하고 이게뭐야!" },
-            { "characterID": "5","expression": 0, "text": "다리는 아프고.. 배는 고프고..." },
-            { "characterID": "1","expression": 7, "text": "......우물우물" },
-            { "characterID": "5","expression": 0, "text": "...뭐먹어?" },
-            { "characterID": "1","expression": 7, "text": "샌드위치." },
-            { "characterID": "5","expression": 0, "text": "......" },
-            { "characterID": "5","expression": 0, "text": "그러고 보니 신입. 오늘 증거품 조사 네가 하지 않았어?" },
-            { "characterID": "1","expression": 7, "text": "우적우적" },
-            { "characterID": "5","expression": 0, "text": "......" },
-            { "characterID": "5","expression": 0, "text": "그 샌드위치 괴인 그러고보니 대머리라고 하더라." },
-            { "characterID": "1","expression": 7, "text": "냠냠쩜쩝" },
-            { "characterID": "5","expression": 0, "text": "그리고 우리 후배도 대머리네." },
-            { "characterID": "1","expression": 0, "text": "꺼억." },
-            { "characterID": "5","expression": 0, "text": "......" },
-            { "characterID": "5","expression": 8, "text": "꺄아악 여기 괴한이있어요..!" }
-        ]
-    },
-    {
-        "id": "gangster_Appear",
-        "lines": [
-            {"characterID": "6","expression": 0,"text": "뭐야 뭐야? 누가 우리 구역에서 깽판 치냐?"},
-            { "characterID": "7","expression": 0, "text": "조용히 해! …근데, 야 너도 냄새 나냐? 샌드위치 냄새" },
-            { "characterID": "8","expression": 0, "text": "저 대머리 아저씨 입에 샌드위치 껍데기 붙어있다!" },
-            { "characterID": "6","expression": 0, "text": "혹시 그 괴한아니야? 샌드위치 강탈마!" },
-            { "characterID": "7","expression": 0, "text": "형님, 근데 이거 진짜 그 괴인 맞을까요? 그냥 퇴근길 직장인 삘인데…" },
-            { "characterID": "8","expression": 0, "text": "그럴땐 아주 좋은 대화수단이있지!" },
-            { "characterID": "8","expression": 0, "text": "실례합니다. 혹시… 신사분의 입가에 묻은 샌드위치 조각과 찬란하게 빛나는 두상으로 보아 귀하께서, 샌드위치를 강탈하시는 괴인 되시겠습니까?" },
-            { "characterID": "1","expression": 0, "text": "...아마도?" },
-            { "characterID": "8","expression": 0, "text": "아, 친절히 답변해주셔서 대단히 감사합니다." },
-            { "characterID": "8","expression": 0, "text": "맞다는데요?" },
-            { "characterID": "6","expression": 0, "text": "뭐? 맞으면 잡아야지 뭐해!" },
-            { "characterID": "7","expression": 0, "text": "오케이, 오늘은 샌드위치 수사다! 준비해라!" }
-        ]
-    },
+  {
+    "id": "first_Partner",
+    "lines": [
+      {
+        "characterID": "5",
+        "expression": 5,
+        "text": "신입! 늦었잖아. 나 여기서 얼어 죽을 뻔했다고."
+      },
+      {
+        "characterID": "1",
+        "expression": 0,
+        "text": "......"
+      },
+      {
+        "characterID": "5",
+        "expression": 3,
+        "text": "......에휴 됐다."
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "이번 건, 초능력이 쓰인 사건이야. 피해자는 하늘에서 갑작스럽게 나타난 괴인에의해 들고있던 샌드위치를 빼았겼어."
+      },
+      {
+        "characterID": "1",
+        "expression": 0,
+        "text": "......"
+      },
+      {
+        "characterID": "5",
+        "expression": 2,
+        "text": "오늘은 완전히 조사 헛쳤어.. 하루종일 고생만하고 이게뭐야!"
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "다리는 아프고.. 배는 고프고..."
+      },
+      {
+        "characterID": "1",
+        "expression": 7,
+        "text": "......우물우물"
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "...뭐먹어?"
+      },
+      {
+        "characterID": "1",
+        "expression": 7,
+        "text": "샌드위치."
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "......"
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "그러고 보니 신입. 오늘 증거품 조사 네가 하지 않았어?"
+      },
+      {
+        "characterID": "1",
+        "expression": 7,
+        "text": "우적우적"
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "......"
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "그 샌드위치 괴인 그러고보니 대머리라고 하더라."
+      },
+      {
+        "characterID": "1",
+        "expression": 7,
+        "text": "냠냠쩜쩝"
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "그리고 우리 후배도 대머리네."
+      },
+      {
+        "characterID": "1",
+        "expression": 0,
+        "text": "꺼억."
+      },
+      {
+        "characterID": "5",
+        "expression": 0,
+        "text": "......"
+      },
+      {
+        "characterID": "5",
+        "expression": 8,
+        "text": "꺄아악 여기 괴한이있어요..!"
+      }
+    ]
+  },
     {
         "id": "gangster_Battle_end",
-        "lines": [
-            {"characterID": "6","expression": 0,"text": "끄윽… 샌드위치 하나에… 내 치아 네 개가 날아갔다…"},
-            {"characterID": "7","expression": 0,"text": "마요네즈를 무기로 쓰다니… 이런 잔혹한 놈…!?"},
-            {"characterID": "8","expression": 0,"text": "이건… 정중히 말씀드리건대… 저희 패배입니다… 샌드위치 파워, 경외합니다…"},
-            {"characterID": "1","expression": 0,"text": "…후우. 식후 운동하니까 소화가 좀 되는군."}
-        ]
-    },
-    {
-        "id": "afther",
-        "lines": [
-            {"characterID": "9","expression": 0,"text": "…그래. 확인했다. 놈이 움직이기 시작했어."},
-            {"characterID": "9","expression": 0,"text": "상상보다 빨라. 그리고… 상상보다 더 많이 먹는다."},
-            {"characterID": "8","expression": 0,"text": "…보스… 조심하세요… 그놈… 샌드위치 괴인입니다…"},
-            {"characterID": "9","expression": 0,"text": "보스가 아니라 점장님이다. 알바생이면 알바다운 태도를 해라."},
-            {"characterID": "8","expression": 0,"text": "…보스도 점장답지는 않은데요.."},
-            {"characterID": "9","expression": 0,"text": "…샌드위치 괴인이라…"},
-            {"characterID": "9","expression": 0,"text": "흥미롭군. 빼앗긴 건 샌드위치일지 몰라도… 결국 그가 빼앗아갈 건… 세상 전체일지도 모르지."},
-            {"characterID": "9","expression": 0,"text": "네. 서핑웨이 OO지점 점장 김올백입니다."}
-        ]
+      "lines": [
+        {
+          "characterID": "6",
+          "expression": 0,
+          "text": "끄윽… 샌드위치 하나에… 내 치아 네 개가 날아갔다…"
+        },
+        {
+          "characterID": "7",
+          "expression": 0,
+          "text": "마요네즈를 무기로 쓰다니… 이런 잔혹한 놈…!?"
+        },
+        {
+          "characterID": "8",
+          "expression": 0,
+          "text": "이건… 정중히 말씀드리건대… 저희 패배입니다… 샌드위치 파워, 경외합니다…"
+        },
+        {
+          "characterID": "1",
+          "expression": 0,
+          "text": "…후우. 식후 운동하니까 소화가 좀 되는군."
+        },
+
+        {
+          "characterID": "9",
+          "expression": 0,
+          "text": "…그래. 확인했다. 놈이 움직이기 시작했어."
+        },
+        {
+          "characterID": "9",
+          "expression": 0,
+          "text": "상상보다 빨라. 그리고… 상상보다 더 많이 먹는다."
+        },
+        {
+          "characterID": "8",
+          "expression": 0,
+          "text": "…보스… 조심하세요… 그놈… 샌드위치 괴인입니다…"
+        },
+        {
+          "characterID": "9",
+          "expression": 0,
+          "text": "보스가 아니라 점장님이다. 알바생이면 알바다운 태도를 해라."
+        },
+        {
+          "characterID": "8",
+          "expression": 0,
+          "text": "…보스도 점장답지는 않은데요.."
+        },
+        {
+          "characterID": "9",
+          "expression": 0,
+          "text": "…샌드위치 괴인이라…"
+        },
+        {
+          "characterID": "9",
+          "expression": 0,
+          "text": "흥미롭군. 빼앗긴 건 샌드위치일지 몰라도… 결국 그가 빼앗아갈 건… 세상 전체일지도 모르지."
+        },
+        {
+          "characterID": "9",
+          "expression": 0,
+          "text": "네. 서핑웨이 OO지점 점장 김올백입니다."
+        }
+      ]
     }
 ]
